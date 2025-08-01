@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "host": { "ENV": "PGHOST" },
+    "port": { "ENV": "PGPORT" },
+    "user": { "ENV": "PGUSER" },
+    "password": { "ENV": "PGPASSWORD" },
+    "database": { "ENV": "PGDATABASE" }
+  },
+  "test": {
+    "driver": "mysql",
+    "host": { "ENV": "PGHOST" },
+    "port": { "ENV": "PGPORT" },
+    "user": { "ENV": "PGUSER" },
+    "password": { "ENV": "PGPASSWORD" },
+    "database": "openmusic_test"
+  },
+  "production": {
+    "driver": "mysql",
+    "host": { "ENV": "PGHOST" },
+    "port": { "ENV": "PGPORT" },
+    "user": { "ENV": "PGUSER" },
+    "password": { "ENV": "PGPASSWORD" },
+    "database": { "ENV": "PGDATABASE" }
+  }
+}
