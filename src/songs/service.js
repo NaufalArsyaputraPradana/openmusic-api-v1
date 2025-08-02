@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
 const InvariantError = require('../exceptions/InvariantError');
 const NotFoundError = require('../exceptions/NotFoundError');
@@ -9,15 +9,12 @@ const { mapDBToModel } = require('../utils/mapDBToModel');
  */
 class SongsService {
   constructor() {
-    this._pool = mysql.createPool({
+    this._pool = new Pool({
       host: process.env.PGHOST || 'localhost',
-      port: process.env.PGPORT || 3306,
-      user: process.env.PGUSER || 'root',
+      port: process.env.PGPORT || 5432,
+      user: process.env.PGUSER || 'postgres',
       password: process.env.PGPASSWORD || '',
       database: process.env.PGDATABASE || 'openmusic',
-      waitForConnections: true,
-      connectionLimit: 10,
-      queueLimit: 0,
     });
   }
 
@@ -36,11 +33,11 @@ class SongsService {
     const id = `song-${nanoid(16)}`;
     const query = `
       INSERT INTO songs (id, title, year, genre, performer, duration, album_id) 
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
     `;
     
     try {
-      const [result] = await this._pool.execute(query, [
+      const result = await this._pool.query(query, [
         id, 
         title, 
         year, 
@@ -50,7 +47,7 @@ class SongsService {
         albumId || null,
       ]);
       
-      if (!result.affectedRows) {
+      if (!result.rowCount) {
         throw new InvariantError('Lagu gagal ditambahkan');
       }
       
@@ -77,14 +74,16 @@ class SongsService {
     if (title || performer) {
       query += ' WHERE';
       const conditions = [];
+      let paramIndex = 1;
       
       if (title) {
-        conditions.push(' title LIKE ?');
+        conditions.push(` title ILIKE $${paramIndex}`);
         queryParams.push(`%${title}%`);
+        paramIndex++;
       }
       
       if (performer) {
-        conditions.push(' performer LIKE ?');
+        conditions.push(` performer ILIKE $${paramIndex}`);
         queryParams.push(`%${performer}%`);
       }
       
@@ -92,8 +91,8 @@ class SongsService {
     }
     
     try {
-      const [rows] = await this._pool.execute(query, queryParams);
-      return rows;
+      const result = await this._pool.query(query, queryParams);
+      return result.rows;
     } catch {
       throw new InvariantError('Gagal mendapatkan lagu');
     }
@@ -105,16 +104,16 @@ class SongsService {
    * @returns {Promise<Object>} Data lagu
    */
   async getSongById(id) {
-    const query = 'SELECT * FROM songs WHERE id = ?';
+    const query = 'SELECT * FROM songs WHERE id = $1';
     
     try {
-      const [rows] = await this._pool.execute(query, [id]);
+      const result = await this._pool.query(query, [id]);
       
-      if (!rows.length) {
+      if (!result.rows.length) {
         throw new NotFoundError('Lagu tidak ditemukan');
       }
       
-      return mapDBToModel.song(rows[0]);
+      return mapDBToModel.song(result.rows[0]);
     } catch (error) {
       if (error instanceof NotFoundError) {
         throw error;
@@ -137,12 +136,12 @@ class SongsService {
   async editSongById(id, { title, year, genre, performer, duration, albumId }) {
     const query = `
       UPDATE songs 
-      SET title = ?, year = ?, genre = ?, performer = ?, duration = ?, album_id = ?
-      WHERE id = ?
+      SET title = $1, year = $2, genre = $3, performer = $4, duration = $5, album_id = $6
+      WHERE id = $7
     `;
     
     try {
-      const [result] = await this._pool.execute(query, [
+      const result = await this._pool.query(query, [
         title, 
         year, 
         genre, 
@@ -152,7 +151,7 @@ class SongsService {
         id,
       ]);
       
-      if (!result.affectedRows) {
+      if (!result.rowCount) {
         throw new NotFoundError('Gagal memperbarui lagu. Id tidak ditemukan');
       }
     } catch (error) {
@@ -168,12 +167,12 @@ class SongsService {
    * @param {string} id - ID lagu
    */
   async deleteSongById(id) {
-    const query = 'DELETE FROM songs WHERE id = ?';
+    const query = 'DELETE FROM songs WHERE id = $1';
     
     try {
-      const [result] = await this._pool.execute(query, [id]);
+      const result = await this._pool.query(query, [id]);
       
-      if (!result.affectedRows) {
+      if (!result.rowCount) {
         throw new NotFoundError('Lagu gagal dihapus. Id tidak ditemukan');
       }
     } catch (error) {

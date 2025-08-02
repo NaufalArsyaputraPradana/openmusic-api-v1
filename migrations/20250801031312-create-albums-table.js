@@ -1,17 +1,14 @@
 'use strict';
 
+// eslint-disable-next-line no-unused-vars
 var dbm;
-var type;
-var seed;
 
 /**
   * We receive the dbmigrate dependency from dbmigrate initially.
   * This enables us to not have to rely on NODE_PATH.
   */
-exports.setup = function(options, seedLink) {
+exports.setup = function(options) {
   dbm = options.dbmigrate;
-  type = dbm.dataType;
-  seed = seedLink;
 };
 
 exports.up = function(db) {
@@ -21,7 +18,7 @@ exports.up = function(db) {
       name VARCHAR(255) NOT NULL,
       year INT NOT NULL,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `);
 };
@@ -31,5 +28,5 @@ exports.down = function(db) {
 };
 
 exports._meta = {
-  "version": 1
+  version: 1
 };

@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
 const InvariantError = require('../exceptions/InvariantError');
 const NotFoundError = require('../exceptions/NotFoundError');
@@ -9,15 +9,12 @@ const { mapDBToModel } = require('../utils/mapDBToModel');
  */
 class AlbumsService {
   constructor() {
-    this._pool = mysql.createPool({
+    this._pool = new Pool({
       host: process.env.PGHOST || 'localhost',
-      port: process.env.PGPORT || 3306,
-      user: process.env.PGUSER || 'root',
+      port: process.env.PGPORT || 5432,
+      user: process.env.PGUSER || 'postgres',
       password: process.env.PGPASSWORD || '',
       database: process.env.PGDATABASE || 'openmusic',
-      waitForConnections: true,
-      connectionLimit: 10,
-      queueLimit: 0,
     });
   }
 
@@ -30,12 +27,12 @@ class AlbumsService {
    */
   async addAlbum({ name, year }) {
     const id = `album-${nanoid(16)}`;
-    const query = 'INSERT INTO albums (id, name, year) VALUES (?, ?, ?)';
+    const query = 'INSERT INTO albums (id, name, year) VALUES ($1, $2, $3)';
     
     try {
-      const [result] = await this._pool.execute(query, [id, name, year]);
+      const result = await this._pool.query(query, [id, name, year]);
       
-      if (!result.affectedRows) {
+      if (!result.rowCount) {
         throw new InvariantError('Album gagal ditambahkan');
       }
       
@@ -54,16 +51,16 @@ class AlbumsService {
    * @returns {Promise<Object>} Data album
    */
   async getAlbumById(id) {
-    const query = 'SELECT * FROM albums WHERE id = ?';
+    const query = 'SELECT * FROM albums WHERE id = $1';
     
     try {
-      const [rows] = await this._pool.execute(query, [id]);
+      const result = await this._pool.query(query, [id]);
       
-      if (!rows.length) {
+      if (!result.rows.length) {
         throw new NotFoundError('Album tidak ditemukan');
       }
       
-      return mapDBToModel.album(rows[0]);
+      return mapDBToModel.album(result.rows[0]);
     } catch (error) {
       if (error instanceof NotFoundError) {
         throw error;
@@ -78,11 +75,11 @@ class AlbumsService {
    * @returns {Promise<Array>} Array lagu-lagu dalam album
    */
   async getSongsByAlbumId(albumId) {
-    const query = 'SELECT id, title, performer FROM songs WHERE album_id = ?';
+    const query = 'SELECT id, title, performer FROM songs WHERE album_id = $1';
     
     try {
-      const [rows] = await this._pool.execute(query, [albumId]);
-      return rows;
+      const result = await this._pool.query(query, [albumId]);
+      return result.rows;
     } catch {
       throw new InvariantError('Gagal mendapatkan lagu-lagu album');
     }
@@ -96,12 +93,12 @@ class AlbumsService {
    * @param {number} albumData.year - Tahun rilis album
    */
   async editAlbumById(id, { name, year }) {
-    const query = 'UPDATE albums SET name = ?, year = ? WHERE id = ?';
+    const query = 'UPDATE albums SET name = $1, year = $2 WHERE id = $3';
     
     try {
-      const [result] = await this._pool.execute(query, [name, year, id]);
+      const result = await this._pool.query(query, [name, year, id]);
       
-      if (!result.affectedRows) {
+      if (!result.rowCount) {
         throw new NotFoundError('Gagal memperbarui album. Id tidak ditemukan');
       }
     } catch (error) {
@@ -117,12 +114,12 @@ class AlbumsService {
    * @param {string} id - ID album
    */
   async deleteAlbumById(id) {
-    const query = 'DELETE FROM albums WHERE id = ?';
+    const query = 'DELETE FROM albums WHERE id = $1';
     
     try {
-      const [result] = await this._pool.execute(query, [id]);
+      const result = await this._pool.query(query, [id]);
       
-      if (!result.affectedRows) {
+      if (!result.rowCount) {
         throw new NotFoundError('Album gagal dihapus. Id tidak ditemukan');
       }
     } catch (error) {

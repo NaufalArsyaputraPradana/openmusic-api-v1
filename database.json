@@ -1,6 +1,6 @@
 {
   "dev": {
-    "driver": "mysql",
+    "driver": "pg",
     "host": { "ENV": "PGHOST" },
     "port": { "ENV": "PGPORT" },
     "user": { "ENV": "PGUSER" },
@@ -8,7 +8,7 @@
     "database": { "ENV": "PGDATABASE" }
   },
   "test": {
-    "driver": "mysql",
+    "driver": "pg",
     "host": { "ENV": "PGHOST" },
     "port": { "ENV": "PGPORT" },
     "user": { "ENV": "PGUSER" },
@@ -16,7 +16,7 @@
     "database": "openmusic_test"
   },
   "production": {
-    "driver": "mysql",
+    "driver": "pg",
     "host": { "ENV": "PGHOST" },
     "port": { "ENV": "PGPORT" },
     "user": { "ENV": "PGUSER" },

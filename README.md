@@ -1,6 +1,6 @@
 # OpenMusic API v1
 
-RESTful API untuk pengelolaan data musik dengan fitur Albums dan Songs menggunakan Node.js, Hapi.js, dan MySQL.
+RESTful API untuk pengelolaan data musik dengan fitur Albums dan Songs menggunakan Node.js, Hapi.js, dan PostgreSQL.
 
 ## 🚀 Fitur
 
@@ -16,7 +16,7 @@ RESTful API untuk pengelolaan data musik dengan fitur Albums dan Songs menggunak
 ## 📋 Prerequisites
 
 - Node.js (v14 atau lebih tinggi)
-- MySQL Server (v8.0 atau lebih tinggi)
+- PostgreSQL Server (v12 atau lebih tinggi)
 - npm atau yarn
 
 ## 🛠️ Installation
@@ -38,16 +38,16 @@ RESTful API untuk pengelolaan data musik dengan fitur Albums dan Songs menggunak
    ```env
    HOST=localhost
    PORT=5000
-   PGUSER=root
+   PGUSER=postgres
    PGPASSWORD=your_password
    PGDATABASE=openmusic
    PGHOST=localhost
-   PGPORT=3306
+   PGPORT=5432
    ```
 
 4. **Setup database**
    
-   Buat database MySQL:
+   Buat database PostgreSQL:
    ```sql
    CREATE DATABASE openmusic;
    ```
@@ -276,7 +276,7 @@ openmusic-api-v1/
 ## 🔧 Technology Stack
 
 - **Framework**: Hapi.js v21.4.0
-- **Database**: MySQL with mysql2 driver
+- **Database**: PostgreSQL with pg driver
 - **Validation**: Joi v17.13.3
 - **Environment**: dotenv v17.2.1
 - **Migration**: db-migrate v0.11.14
