@@ -1,32 +1,35 @@
-'use strict';
-
-// eslint-disable-next-line no-unused-vars
-var dbm;
+/* eslint-disable camelcase */
 
 /**
-  * We receive the dbmigrate dependency from dbmigrate initially.
-  * This enables us to not have to rely on NODE_PATH.
-  */
-exports.setup = function(options) {
-  dbm = options.dbmigrate;
+ * Migration untuk membuat tabel albums
+ */
+exports.shorthands = undefined;
+
+exports.up = (pgm) => {
+  pgm.createTable('albums', {
+    id: {
+      type: 'varchar(50)',
+      primaryKey: true,
+    },
+    name: {
+      type: 'varchar(255)',
+      notNull: true,
+    },
+    year: {
+      type: 'integer',
+      notNull: true,
+    },
+    created_at: {
+      type: 'timestamp',
+      default: pgm.func('current_timestamp'),
+    },
+    updated_at: {
+      type: 'timestamp',
+      default: pgm.func('current_timestamp'),
+    },
+  });
 };
 
-exports.up = function(db) {
-  return db.runSql(`
-    CREATE TABLE IF NOT EXISTS albums (
-      id VARCHAR(50) NOT NULL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      year INT NOT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-  `);
-};
-
-exports.down = function(db) {
-  return db.runSql('DROP TABLE IF EXISTS albums;');
-};
-
-exports._meta = {
-  version: 1
+exports.down = (pgm) => {
+  pgm.dropTable('albums');
 };

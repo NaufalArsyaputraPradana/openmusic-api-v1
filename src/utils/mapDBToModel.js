@@ -18,14 +18,14 @@ const mapDBToModel = {
     id,
     name,
     year,
+    // eslint-disable-next-line no-unused-vars
     created_at,
+    // eslint-disable-next-line no-unused-vars
     updated_at,
   }) => ({
     id,
     name,
     year,
-    createdAt: created_at,
-    updatedAt: updated_at,
   }),
 
   /**
@@ -64,7 +64,9 @@ const mapDBToModel = {
     performer,
     duration,
     album_id,
+    // eslint-disable-next-line no-unused-vars
     created_at,
+    // eslint-disable-next-line no-unused-vars
     updated_at,
   }) => ({
     id,
@@ -74,8 +76,6 @@ const mapDBToModel = {
     performer,
     duration,
     albumId: album_id,
-    createdAt: created_at,
-    updatedAt: updated_at,
   }),
 };
 

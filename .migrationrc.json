@@ -1,0 +1,23 @@
+{
+  "databaseUrl": {
+    "ENV": "DATABASE_URL"
+  },
+  "migrationPattern": "migrations/*",
+  "migrationDir": "migrations",
+  "direction": "up",
+  "typeShorthands": {
+    "id": {
+      "type": "varchar",
+      "length": 50,
+      "primaryKey": true
+    },
+    "created_at": {
+      "type": "timestamp",
+      "default": "now()"
+    },
+    "updated_at": {
+      "type": "timestamp", 
+      "default": "now()"
+    }
+  }
+}

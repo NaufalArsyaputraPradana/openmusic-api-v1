@@ -1,37 +1,51 @@
-'use strict';
-
-// eslint-disable-next-line no-unused-vars
-var dbm;
+/* eslint-disable camelcase */
 
 /**
-  * We receive the dbmigrate dependency from dbmigrate initially.
-  * This enables us to not have to rely on NODE_PATH.
-  */
-exports.setup = function(options) {
-  dbm = options.dbmigrate;
+ * Migration untuk membuat tabel songs
+ */
+exports.shorthands = undefined;
+
+exports.up = (pgm) => {
+  pgm.createTable('songs', {
+    id: {
+      type: 'varchar(50)',
+      primaryKey: true,
+    },
+    title: {
+      type: 'varchar(255)',
+      notNull: true,
+    },
+    year: {
+      type: 'integer',
+      notNull: true,
+    },
+    genre: {
+      type: 'varchar(100)',
+      notNull: true,
+    },
+    performer: {
+      type: 'varchar(255)',
+      notNull: true,
+    },
+    duration: {
+      type: 'integer',
+    },
+    album_id: {
+      type: 'varchar(50)',
+      references: 'albums(id)',
+      onDelete: 'SET NULL',
+    },
+    created_at: {
+      type: 'timestamp',
+      default: pgm.func('current_timestamp'),
+    },
+    updated_at: {
+      type: 'timestamp',
+      default: pgm.func('current_timestamp'),
+    },
+  });
 };
 
-exports.up = function(db) {
-  return db.runSql(`
-    CREATE TABLE IF NOT EXISTS songs (
-      id VARCHAR(50) NOT NULL PRIMARY KEY,
-      title VARCHAR(255) NOT NULL,
-      year INT NOT NULL,
-      genre VARCHAR(100) NOT NULL,
-      performer VARCHAR(255) NOT NULL,
-      duration INT,
-      album_id VARCHAR(50),
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (album_id) REFERENCES albums(id) ON DELETE SET NULL
-    );
-  `);
-};
-
-exports.down = function(db) {
-  return db.runSql('DROP TABLE IF EXISTS songs;');
-};
-
-exports._meta = {
-  version: 1
+exports.down = (pgm) => {
+  pgm.dropTable('songs');
 };

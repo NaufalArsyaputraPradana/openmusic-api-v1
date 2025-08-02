@@ -23,7 +23,7 @@ RESTful API untuk pengelolaan data musik dengan fitur Albums dan Songs menggunak
 
 1. **Clone repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/NaufalArsyaputraPradana/openmusic-api-v1
    cd openmusic-api-v1
    ```
 
@@ -43,6 +43,7 @@ RESTful API untuk pengelolaan data musik dengan fitur Albums dan Songs menggunak
    PGDATABASE=openmusic
    PGHOST=localhost
    PGPORT=5432
+   DATABASE_URL=postgres://postgres:your_password@localhost:5432/openmusic
    ```
 
 4. **Setup database**
@@ -151,8 +152,6 @@ Contoh: `/songs?title=fix&performer=coldplay`
       "id": "album-Mk8AnmCp210PwT6B",
       "name": "Viva la Vida",
       "year": 2008,
-      "createdAt": "2025-08-01T07:31:20.000Z",
-      "updatedAt": "2025-08-01T07:31:20.000Z",
       "songs": [
         {
           "id": "song-A23ycQrF3c6XwPiX",
@@ -247,7 +246,7 @@ openmusic-api-v1/
 │   └── utils/
 │       └── mapDBToModel.js  # Database mapping utilities
 ├── .env                     # Environment variables
-├── database.json            # Database configuration
+├── .migrationrc.json        # Migration configuration
 ├── package.json
 └── server.js               # Application entry point
 ```
@@ -279,7 +278,7 @@ openmusic-api-v1/
 - **Database**: PostgreSQL with pg driver
 - **Validation**: Joi v17.13.3
 - **Environment**: dotenv v17.2.1
-- **Migration**: db-migrate v0.11.14
+- **Migration**: node-pg-migrate v8.0.3
 - **ID Generation**: nanoid v5.1.5
 
 ## 📄 License
