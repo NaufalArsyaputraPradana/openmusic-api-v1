@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "setup": "npm install && npm run migrate up && npm run lint",
+    "setup:full": "npm install && npm run migrate up && npm run lint && echo 'Setup completed! Run npm start to begin.'",
+    "dev": "npm run start-dev",
+    "reset:db": "npm run migrate down && npm run migrate up",
+    "test:api": "echo 'Test endpoints manually or use Postman collection'",
+    "check": "npm run lint && echo 'Code quality check completed'",
+    "fix": "npm run lint:fix && echo 'Code issues fixed'",
+    "info": "echo 'OpenMusic API v1 - Available Scripts:' && echo '  npm run setup     - Complete setup' && echo '  npm start         - Start server' && echo '  npm run dev       - Start dev server' && echo '  npm run check     - Check code quality' && echo '  npm run fix       - Fix code issues' && echo '  npm run reset:db  - Reset database'"
+  }
+}
