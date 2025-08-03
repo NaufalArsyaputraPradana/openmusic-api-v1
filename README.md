@@ -43,7 +43,6 @@ RESTful API untuk pengelolaan data musik dengan fitur Albums dan Songs menggunak
    PGDATABASE=openmusic
    PGHOST=localhost
    PGPORT=5432
-   DATABASE_URL=postgres://postgres:your_password@localhost:5432/openmusic
    ```
 
 4. **Setup database**

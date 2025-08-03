@@ -1,7 +1,7 @@
 {
-	"id": "f8ff2bed-9ec7-4a9b-b893-62cf8e4aad06",
+	"id": "68e82ef8-29d9-49e5-b7a7-84d5db6db0c9",
 	"name": "Open Music API V1 Test",
-	"timestamp": "2025-08-03T02:17:08.516Z",
+	"timestamp": "2025-08-03T02:24:42.731Z",
 	"collection_id": "40428528-511bab5f-2a61-4a40-bee8-d6f0d7ad7806",
 	"folder_id": 0,
 	"environment_id": "40428528-2e0a1cfb-ef25-4147-aa91-f31a22686fcc",
@@ -9,14 +9,14 @@
 	"delay": 0,
 	"persist": true,
 	"status": "finished",
-	"startedAt": "2025-08-03T02:17:00.065Z",
+	"startedAt": "2025-08-03T02:24:33.379Z",
 	"totalFail": 0,
 	"results": [
 		{
 			"id": "694db284-c727-4608-a6e6-86e9930e4c7b",
 			"name": "Add Album with Invalid Payload",
 			"url": "http://localhost:5000/albums",
-			"time": 9,
+			"time": 14,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -46,10 +46,10 @@
 				}
 			},
 			"times": [
-				134,
-				9,
-				7,
-				9
+				97,
+				15,
+				10,
+				14
 			],
 			"allTests": [
 				{
@@ -82,7 +82,7 @@
 			"id": "897bf7b0-d3b2-4ee3-abdf-835c05211744",
 			"name": "Add Album with Valid Payload",
 			"url": "http://localhost:5000/albums",
-			"time": 233,
+			"time": 374,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -112,7 +112,7 @@
 				}
 			},
 			"times": [
-				233
+				374
 			],
 			"allTests": [
 				{
@@ -127,7 +127,7 @@
 			"id": "88d75b4b-184e-4cf2-a695-b80ade7f1e9c",
 			"name": "Get Detail Album with Invalid Id",
 			"url": "http://localhost:5000/albums/xxx",
-			"time": 14,
+			"time": 17,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -157,7 +157,7 @@
 				}
 			},
 			"times": [
-				14
+				17
 			],
 			"allTests": [
 				{
@@ -171,8 +171,8 @@
 		{
 			"id": "2e915b6e-1c2c-4db5-a59e-a64f45ef5fe3",
 			"name": "Get Detail Album with Valid Id",
-			"url": "http://localhost:5000/albums/album-cMgYD1NnjneYGM2b",
-			"time": 14,
+			"url": "http://localhost:5000/albums/album-ydpDiU6vSdLH3G9W",
+			"time": 16,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -202,7 +202,7 @@
 				}
 			},
 			"times": [
-				14
+				16
 			],
 			"allTests": [
 				{
@@ -216,8 +216,8 @@
 		{
 			"id": "9379987b-e9b2-461e-8b1f-ad6cb5d8cc11",
 			"name": "Edit Album with Invalid Payload",
-			"url": "http://localhost:5000/albums/album-cMgYD1NnjneYGM2b",
-			"time": 6,
+			"url": "http://localhost:5000/albums/album-ydpDiU6vSdLH3G9W",
+			"time": 10,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -247,10 +247,10 @@
 				}
 			},
 			"times": [
-				7,
 				9,
-				7,
-				6
+				10,
+				11,
+				10
 			],
 			"allTests": [
 				{
@@ -283,7 +283,7 @@
 			"id": "055bf4b4-0a21-487d-a724-b6dd7c1587d4",
 			"name": "Edit Album with Invalid Id",
 			"url": "http://localhost:5000/albums/xxx",
-			"time": 6,
+			"time": 12,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -313,7 +313,7 @@
 				}
 			},
 			"times": [
-				6
+				12
 			],
 			"allTests": [
 				{
@@ -327,8 +327,8 @@
 		{
 			"id": "4e33aecb-e571-4875-b315-d055b8525c91",
 			"name": "Edit Album with Valid Id",
-			"url": "http://localhost:5000/albums/album-cMgYD1NnjneYGM2b",
-			"time": 6,
+			"url": "http://localhost:5000/albums/album-ydpDiU6vSdLH3G9W",
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -368,7 +368,7 @@
 				}
 			},
 			"times": [
-				6
+				10
 			],
 			"allTests": [
 				{
@@ -385,7 +385,7 @@
 			"id": "5d5475dd-5f33-41c2-a689-805bb4fd7a72",
 			"name": "Delete Album with Invalid Id",
 			"url": "http://localhost:5000/albums/xxx",
-			"time": 7,
+			"time": 9,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -415,7 +415,7 @@
 				}
 			},
 			"times": [
-				7
+				9
 			],
 			"allTests": [
 				{
@@ -429,8 +429,8 @@
 		{
 			"id": "cf0bc4b1-66dd-4aa2-84ea-44c9f42a743b",
 			"name": "Delete Album with Valid Id",
-			"url": "http://localhost:5000/albums/album-cMgYD1NnjneYGM2b",
-			"time": 7,
+			"url": "http://localhost:5000/albums/album-ydpDiU6vSdLH3G9W",
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -470,7 +470,7 @@
 				}
 			},
 			"times": [
-				7
+				10
 			],
 			"allTests": [
 				{
@@ -487,7 +487,7 @@
 			"id": "f790638a-2c31-4d30-b8f6-68920118f82f",
 			"name": "Add Song with Invalid Payload",
 			"url": "http://localhost:5000/songs",
-			"time": 4,
+			"time": 6,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -517,14 +517,14 @@
 				}
 			},
 			"times": [
-				5,
+				6,
 				4,
 				5,
-				4,
-				4,
-				4,
-				4,
-				4
+				5,
+				5,
+				5,
+				6,
+				6
 			],
 			"allTests": [
 				{
@@ -581,7 +581,7 @@
 			"id": "9af9394f-62cf-4039-a2f8-23b0b5231dfa",
 			"name": "Add Song with Valid Payload",
 			"url": "http://localhost:5000/songs",
-			"time": 160,
+			"time": 366,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -611,7 +611,7 @@
 				}
 			},
 			"times": [
-				160
+				366
 			],
 			"allTests": [
 				{
@@ -626,7 +626,7 @@
 			"id": "880da248-cf6b-44d5-b090-df5d6661474e",
 			"name": "[No Test] Add Song with Valid Payload",
 			"url": "http://localhost:5000/songs",
-			"time": 5,
+			"time": 20,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -634,7 +634,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				5
+				20
 			],
 			"allTests": [
 				{}
@@ -644,7 +644,7 @@
 			"id": "d042939b-099e-429b-b3c8-9ad8005512e7",
 			"name": "Get All Songs",
 			"url": "http://localhost:5000/songs",
-			"time": 5,
+			"time": 8,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -674,7 +674,7 @@
 				}
 			},
 			"times": [
-				5
+				8
 			],
 			"allTests": [
 				{
@@ -689,7 +689,7 @@
 			"id": "c3e6fbf9-021d-4017-96c4-fe5c8a5e8372",
 			"name": "Get Detail Songs with Invalid Id",
 			"url": "http://localhost:5000/songs/xxx",
-			"time": 6,
+			"time": 9,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -719,7 +719,7 @@
 				}
 			},
 			"times": [
-				6
+				9
 			],
 			"allTests": [
 				{
@@ -733,8 +733,8 @@
 		{
 			"id": "8b0c8991-d990-4a8b-aa39-512a413512f4",
 			"name": "Get Detail Songs with Valid Id",
-			"url": "http://localhost:5000/songs/song-WYambsxeaKAkC0Hg",
-			"time": 4,
+			"url": "http://localhost:5000/songs/song-5tX38r2c_U3Ubfu7",
+			"time": 7,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -764,7 +764,7 @@
 				}
 			},
 			"times": [
-				4
+				7
 			],
 			"allTests": [
 				{
@@ -778,8 +778,8 @@
 		{
 			"id": "b6cff5bc-4d28-462f-ba26-1d92c16e527b",
 			"name": "Edit Song with Invalid Payload",
-			"url": "http://localhost:5000/songs/song-WYambsxeaKAkC0Hg",
-			"time": 4,
+			"url": "http://localhost:5000/songs/song-5tX38r2c_U3Ubfu7",
+			"time": 5,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -809,14 +809,14 @@
 				}
 			},
 			"times": [
-				4,
-				4,
-				4,
-				5,
 				6,
-				4,
+				6,
+				6,
+				6,
+				8,
+				6,
 				5,
-				4
+				5
 			],
 			"allTests": [
 				{
@@ -873,7 +873,7 @@
 			"id": "42ab5653-7f9f-4827-88a3-b9e66c30527d",
 			"name": "Edit Song with Invalid Id",
 			"url": "http://localhost:5000/songs/xxx",
-			"time": 6,
+			"time": 8,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -903,7 +903,7 @@
 				}
 			},
 			"times": [
-				6
+				8
 			],
 			"allTests": [
 				{
@@ -917,8 +917,8 @@
 		{
 			"id": "87dec1f4-d755-495d-a397-4c68f6089b2f",
 			"name": "Edit Song with Valid Id",
-			"url": "http://localhost:5000/songs/song-WYambsxeaKAkC0Hg",
-			"time": 6,
+			"url": "http://localhost:5000/songs/song-5tX38r2c_U3Ubfu7",
+			"time": 5,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -958,7 +958,7 @@
 				}
 			},
 			"times": [
-				6
+				5
 			],
 			"allTests": [
 				{
@@ -1019,8 +1019,8 @@
 		{
 			"id": "9a8cc07c-edb8-4a67-941b-264221ce2545",
 			"name": "Delete Song with Valid Id",
-			"url": "http://localhost:5000/songs/song-WYambsxeaKAkC0Hg",
-			"time": 5,
+			"url": "http://localhost:5000/songs/song-5tX38r2c_U3Ubfu7",
+			"time": 7,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -1060,7 +1060,7 @@
 				}
 			},
 			"times": [
-				5
+				7
 			],
 			"allTests": [
 				{
@@ -1077,24 +1077,6 @@
 			"id": "429eb77c-883a-48cd-a8c6-e400f6baac56",
 			"name": "Add Album",
 			"url": "http://localhost:5000/albums",
-			"time": 8,
-			"responseCode": {
-				"code": 201,
-				"name": "Created"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				8
-			],
-			"allTests": [
-				{}
-			]
-		},
-		{
-			"id": "5c6c32e2-fcbe-47b2-8968-0e9bdea88d66",
-			"name": "Add Album With No Songs",
-			"url": "http://localhost:5000/albums",
 			"time": 6,
 			"responseCode": {
 				"code": 201,
@@ -1110,53 +1092,26 @@
 			]
 		},
 		{
-			"id": "dded1e7d-e97a-4a09-be0c-edf6b2653a7b",
-			"name": "[Optional] Add Song A with Album Id",
-			"url": "http://localhost:5000/songs",
-			"time": 12,
+			"id": "5c6c32e2-fcbe-47b2-8968-0e9bdea88d66",
+			"name": "Add Album With No Songs",
+			"url": "http://localhost:5000/albums",
+			"time": 7,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
 			},
-			"tests": {
-				"it should response 201 status code": true,
-				"response Content-Type header should have application/json value": true,
-				"response body should an object": true,
-				"response body have correct property and value": true
-			},
-			"testPassFailCounts": {
-				"it should response 201 status code": {
-					"pass": 1,
-					"fail": 0
-				},
-				"response Content-Type header should have application/json value": {
-					"pass": 1,
-					"fail": 0
-				},
-				"response body should an object": {
-					"pass": 1,
-					"fail": 0
-				},
-				"response body have correct property and value": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
+			"tests": {},
+			"testPassFailCounts": {},
 			"times": [
-				12
+				7
 			],
 			"allTests": [
-				{
-					"it should response 201 status code": true,
-					"response Content-Type header should have application/json value": true,
-					"response body should an object": true,
-					"response body have correct property and value": true
-				}
+				{}
 			]
 		},
 		{
-			"id": "ca66443c-01cf-4ca5-84b3-255426096193",
-			"name": "[Optional] Add Song B with Album Id",
+			"id": "dded1e7d-e97a-4a09-be0c-edf6b2653a7b",
+			"name": "[Optional] Add Song A with Album Id",
 			"url": "http://localhost:5000/songs",
 			"time": 7,
 			"responseCode": {
@@ -1200,9 +1155,54 @@
 			]
 		},
 		{
+			"id": "ca66443c-01cf-4ca5-84b3-255426096193",
+			"name": "[Optional] Add Song B with Album Id",
+			"url": "http://localhost:5000/songs",
+			"time": 6,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"it should response 201 status code": true,
+				"response Content-Type header should have application/json value": true,
+				"response body should an object": true,
+				"response body have correct property and value": true
+			},
+			"testPassFailCounts": {
+				"it should response 201 status code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response Content-Type header should have application/json value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"it should response 201 status code": true,
+					"response Content-Type header should have application/json value": true,
+					"response body should an object": true,
+					"response body have correct property and value": true
+				}
+			]
+		},
+		{
 			"id": "6fb03c33-f622-4a03-985c-6fbb51e8cc36",
 			"name": "[Optional] Get Detail Album which Contains Songs",
-			"url": "http://localhost:5000/albums/album-wyb-SKX0K0l6zD0E",
+			"url": "http://localhost:5000/albums/album-rdczVwCyO1t8gNEH",
 			"time": 8,
 			"responseCode": {
 				"code": 200,
@@ -1247,7 +1247,7 @@
 		{
 			"id": "8e243207-4fb1-4d24-85ea-3943081fd17c",
 			"name": "[Optional] Get Detail Album which Not Contains Songs",
-			"url": "http://localhost:5000/albums/album-KOZit7E_lE7s9iDF",
+			"url": "http://localhost:5000/albums/album-JaVz72n4q9uMOqaf",
 			"time": 8,
 			"responseCode": {
 				"code": 200,
@@ -1329,7 +1329,7 @@
 			"id": "8eeaa2e9-4bda-4b15-8205-a2369e35db3f",
 			"name": "Add Song C",
 			"url": "http://localhost:5000/songs",
-			"time": 7,
+			"time": 6,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -1337,7 +1337,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				7
+				6
 			],
 			"allTests": [
 				{}
@@ -1347,7 +1347,7 @@
 			"id": "aa4c311a-65f5-4aba-bbd8-71a6b65c26f8",
 			"name": "Add Song D",
 			"url": "http://localhost:5000/songs",
-			"time": 7,
+			"time": 6,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -1355,7 +1355,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				7
+				6
 			],
 			"allTests": [
 				{}
@@ -1365,51 +1365,6 @@
 			"id": "187cc1a4-8458-4db5-8947-3fb5c30c2aa2",
 			"name": "[Optional] Seach Song using Title",
 			"url": "http://localhost:5000/songs?title=cint",
-			"time": 6,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"it should response 200 status code": true,
-				"response Content-Type header should have application/json value": true,
-				"response body should an object": true,
-				"response body have correct property and value": true
-			},
-			"testPassFailCounts": {
-				"it should response 200 status code": {
-					"pass": 1,
-					"fail": 0
-				},
-				"response Content-Type header should have application/json value": {
-					"pass": 1,
-					"fail": 0
-				},
-				"response body should an object": {
-					"pass": 1,
-					"fail": 0
-				},
-				"response body have correct property and value": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"it should response 200 status code": true,
-					"response Content-Type header should have application/json value": true,
-					"response body should an object": true,
-					"response body have correct property and value": true
-				}
-			]
-		},
-		{
-			"id": "ebef88b9-9fbf-4da3-a74f-d449c2234abb",
-			"name": "[Optional] Seach Song using Performer",
-			"url": "http://localhost:5000/songs?performer=chris",
 			"time": 5,
 			"responseCode": {
 				"code": 200,
@@ -1441,6 +1396,51 @@
 			},
 			"times": [
 				5
+			],
+			"allTests": [
+				{
+					"it should response 200 status code": true,
+					"response Content-Type header should have application/json value": true,
+					"response body should an object": true,
+					"response body have correct property and value": true
+				}
+			]
+		},
+		{
+			"id": "ebef88b9-9fbf-4da3-a74f-d449c2234abb",
+			"name": "[Optional] Seach Song using Performer",
+			"url": "http://localhost:5000/songs?performer=chris",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"it should response 200 status code": true,
+				"response Content-Type header should have application/json value": true,
+				"response body should an object": true,
+				"response body have correct property and value": true
+			},
+			"testPassFailCounts": {
+				"it should response 200 status code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response Content-Type header should have application/json value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body should an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response body have correct property and value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
 			],
 			"allTests": [
 				{
@@ -1499,7 +1499,7 @@
 		{
 			"id": "7ed319cd-c402-48f2-aee6-efeb772c976c",
 			"name": "[Optional] Delete Song A",
-			"url": "http://localhost:5000/songs/song-pZ4Ptuj9vwyc09Lr",
+			"url": "http://localhost:5000/songs/song-ATM9MSmO2psSxxsh",
 			"time": 6,
 			"responseCode": {
 				"code": 200,
@@ -1517,8 +1517,8 @@
 		{
 			"id": "02b72f3d-ce6f-40af-be4c-01355028e40d",
 			"name": "[Optional] Delete Song B",
-			"url": "http://localhost:5000/songs/song-qhbN7kJpfmaWuNFF",
-			"time": 7,
+			"url": "http://localhost:5000/songs/song-bzrzo2MZ5mcrkSy3",
+			"time": 5,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -1526,7 +1526,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				7
+				5
 			],
 			"allTests": [
 				{}
@@ -1535,7 +1535,7 @@
 		{
 			"id": "08696401-0345-4515-935b-ebe7a654669e",
 			"name": "[Optional] Delete Song C",
-			"url": "http://localhost:5000/songs/song-3EMcknt62PkwGcrF",
+			"url": "http://localhost:5000/songs/song-Vvg0li4sYR2Etn3Y",
 			"time": 7,
 			"responseCode": {
 				"code": 200,
@@ -1553,7 +1553,7 @@
 		{
 			"id": "4718d5c4-22c7-487d-8e76-c06e4e584af7",
 			"name": "[Optional] Delete Song D",
-			"url": "http://localhost:5000/songs/song-IqsCqJTRjCauQvze",
+			"url": "http://localhost:5000/songs/song-cbqLYOMnXS4JMvzY",
 			"time": 6,
 			"responseCode": {
 				"code": 200,
@@ -1570,7 +1570,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 868,
+	"totalTime": 1257,
 	"collection": {
 		"requests": [
 			{

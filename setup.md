@@ -30,7 +30,6 @@ PGPASSWORD=password
 PGDATABASE=openmusic
 PGHOST=localhost
 PGPORT=5432
-DATABASE_URL=postgres://postgres:password@localhost:5432/openmusic
 ```
 
 #### 4. Jalankan Database Migration
